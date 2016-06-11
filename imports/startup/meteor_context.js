@@ -1,4 +1,5 @@
 import { merge } from 'lodash';
+import { parseArray } from './utilities';
 
 let Meteor;
 let Random;
@@ -31,7 +32,8 @@ const settings = merge(Meteor.settings, process.env);
 const ENV = function() {
   return {
     DOMAIN: settings.DOMAIN,
-    MANDRILL_API_KEY: settings.MANDRILL_API_KEY
+    MANDRILL_API_KEY: settings.MANDRILL_API_KEY,
+    API_TOKENS: parseArray(settings.API_TOKENS)
   };
 };
 

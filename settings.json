@@ -1,3 +1,4 @@
 {
-  "DOMAIN": "farewill-mailserver.com"
+  "DOMAIN": "farewill-mailserver.com",
+  "API_TOKENS": ["TEST_TOKEN"]
 }

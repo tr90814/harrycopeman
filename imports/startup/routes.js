@@ -8,7 +8,7 @@ import { sendEmail } from '../api/send_email';
 // Helpers
 const helpers = {
   create: function(params, req, res) {
-    const email = req.body.data.email;
+    const email = req.body.email;
     const inboundAddress = generateEmailAddress();
     const date = new Date();
 
@@ -23,8 +23,8 @@ const helpers = {
   },
 
   update: function(params, req, res) {
-    const oldEmail = req.body.data.oldEmail;
-    const newEmail = req.body.data.newEmail;
+    const oldEmail = req.body.oldEmail;
+    const newEmail = req.body.newEmail;
 
     ForwardingMap.update({forwardingAddress: oldEmail}, {
       forwardingAddress: newEmail,
@@ -54,7 +54,7 @@ const helpers = {
 // Middlewares
 Picker.middleware(BodyParser.urlencoded({ extended: false }));
 Picker.middleware(BodyParser.json());
-Picker.middleware(authCheck);
+// Picker.middleware(authCheck);
 
 // Routes
 Picker.route('/create', helpers.create);
