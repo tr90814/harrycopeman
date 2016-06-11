@@ -1,0 +1,14 @@
+machine:
+  node:
+    version: 0.12.0
+
+  environment:
+    API_TOKENS: '["test_token"]'
+
+dependencies:
+  override:
+    - npm install
+
+notify:
+  webhooks:
+    - url: https://farewill-hubot.herokuapp.com/hubot/circle

@@ -2,3 +2,5 @@ meteor-base
 mongo
 es5-shim
 ecmascript
+meteorhacks:picker
+random

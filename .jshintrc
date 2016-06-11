@@ -1,0 +1,18 @@
+{
+  "strict": false,
+  "esnext": true,
+  "moz": true,
+  "boss": true,
+  "node": true,
+  "validthis": true,
+  "globals": {
+    "console": true,
+    "Promise": true,
+    "it": true,
+    "describe": true,
+    "arguments": true,
+    "Assets": true,
+    "beforeEach": true,
+    "afterEach": true
+  }
+}
