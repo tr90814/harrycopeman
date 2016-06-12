@@ -49,7 +49,7 @@ const helpers = {
       if (event.event !== 'inbound') return;
       sendEmail({
         "raw_message": event.msg.raw_msg,
-        "from_email": event.msg.from_email,
+        "from_email": "forwarding@farewill.com",
         "from_name": event.msg.from_name,
         "to": [ForwardingMap.map(event.msg.email)]
       });
