@@ -1,7 +1,7 @@
-import { HTTP } from 'meteor/http';
 import { Picker } from 'meteor/meteorhacks:picker';
 import BodyParser from 'body-parser';
 import { authCheck } from './authenticate';
+import { parseArray } from './utilities';
 import { generateEmailAddress } from '../api/email_addresses';
 import { ForwardingMap } from '../api/forwarding_map';
 import { sendEmail } from '../api/send_email';
@@ -36,19 +36,21 @@ const helpers = {
   },
 
   redirectMail: function(params, req, res) {
-    console.log(req.body);
+    const events = parseArray(req.body.mandrill_events);
+    console.log(events);
+    res.end();
 
-    // const data = req.body.mandrill_events;
-    // const emailObj = {
-    //   "raw_message": data.msg.raw_msg,
-    //   "from_email": data.msg.from_email,
-    //   "from_name": data.msg.from_name,
-    //   "to": [ForwardingMap.map(data.msg.email)]
-    // };
-
-    // sendEmail(emailObj);
-
-    return res.end();
+    events.forEach((event) => {
+      if (event.event !== 'inbound') return;
+      const emailObj = {
+        "raw_message": event.msg.raw_msg,
+        "from_email": event.msg.from_email,
+        "from_name": event.msg.from_name,
+        "to": [ForwardingMap.map(event.msg.email)]
+      };
+      console.log(emailObj);
+      // sendEmail(emailObj);
+    });
   }
 };
 
