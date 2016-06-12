@@ -7,7 +7,7 @@ const MandrillAPI = new Mandrill(Meteor.settings.MANDRILL_APIKEY);
 const _private = {
   send: function(params) {
     MandrillAPI.messages.sendRaw(params, function(err) {
-      if (err) {
+      if (err && err.status !== 'sent') {
         console.log('[Mandrill][Error] ' + JSON.stringify(err));
       } else {
         console.log('[Mandrill][Sent]');
@@ -41,4 +41,3 @@ module.exports = {
   _private,
   MandrillAPI
 };
-
