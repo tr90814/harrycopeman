@@ -26,14 +26,13 @@ const helpers = {
   update: function(params, req, res) {
     const oldEmail = req.body.oldEmail;
     const newEmail = req.body.newEmail;
-    const query = { forwardingAddress: oldEmail };
 
-    ForwardingMap.update(query, {$set: {
+    ForwardingMap.update({forwardingAddress: oldEmail}, {$set: {
       forwardingAddress: newEmail,
       updatedAt: new Date()
     }}, {multi: true});
 
-    const emails = ForwardingMap.find(query).fetch().map((el) => {
+    const emails = ForwardingMap.find({forwardingAddress: newEmail}).fetch().map((el) => {
       return el.forwardingAddress;
     });
 
