@@ -1,3 +1,4 @@
+import { HTTP } from 'meteor/http';
 import { Picker } from 'meteor/meteorhacks:picker';
 import BodyParser from 'body-parser';
 import { authCheck } from './authenticate';
@@ -37,7 +38,7 @@ const helpers = {
   redirectMail: function(params, req, res) {
     console.log(req.body);
 
-    const data = req.body.data;
+    const data = req.body;
     const emailObj = {
       "raw_message": data.msg.raw_msg,
       "from_email": data.msg.from_email,
@@ -59,6 +60,6 @@ Picker.middleware(BodyParser.json());
 // Routes
 Picker.route('/create', helpers.create);
 Picker.route('/update', helpers.update);
-Picker.route('/webhooks/inbound-mail', helpers.inbound);
+Picker.route('/inbound_mail', helpers.redirectMail);
 
 module.exports = helpers;

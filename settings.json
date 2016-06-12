@@ -1,4 +1,5 @@
 {
   "DOMAIN": "farewill-mailserver.com",
-  "API_TOKENS": ["TEST_TOKEN"]
+  "API_TOKENS": ["TEST_TOKEN"],
+  "MANDRILL_APIKEY": "gQ9PHC44VIIKqMBBGRt4Hg"
 }

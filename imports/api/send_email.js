@@ -8,9 +8,9 @@ const _private = {
   send: function(params) {
     MandrillAPI.messages.sendRaw(params, function(err) {
       if (err) {
-        console.log('[Mandrill][Error] ' + err.message);
+        console.log('[Mandrill][Error] ' + JSON.stringify(err));
       } else {
-        console.log('[Mandrill][Sent] Ping error emails to: ' + ENV().EMAILS);
+        console.log('[Mandrill][Sent]');
       }
     });
   },
@@ -26,18 +26,18 @@ const _private = {
       "key": ENV().MANDRILL_APIKEY,
       "async": false,
       "ip_pool": "Main Pool",
-      "send_at": "example send_at",
       "return_path_domain": null
     });
   }
 };
 
-const sendEmails = function(emailObj) {
+const sendEmail = function(emailObj) {
+  console.log(_private.params(emailObj));
   return _private.send(_private.params(emailObj));
 };
 
 module.exports = {
-  sendEmails,
+  sendEmail,
   _private,
   MandrillAPI
 };

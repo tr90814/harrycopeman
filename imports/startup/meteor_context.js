@@ -32,7 +32,7 @@ const settings = merge(Meteor.settings, process.env);
 const ENV = function() {
   return {
     DOMAIN: settings.DOMAIN,
-    MANDRILL_API_KEY: settings.MANDRILL_API_KEY,
+    MANDRILL_APIKEY: settings.MANDRILL_APIKEY,
     API_TOKENS: parseArray(settings.API_TOKENS)
   };
 };
