@@ -38,15 +38,15 @@ const helpers = {
   redirectMail: function(params, req, res) {
     console.log(req.body);
 
-    const data = req.body;
-    const emailObj = {
-      "raw_message": data.msg.raw_msg,
-      "from_email": data.msg.from_email,
-      "from_name": data.msg.from_name,
-      "to": [ForwardingMap.map(data.msg.email)]
-    };
+    // const data = req.body.mandrill_events;
+    // const emailObj = {
+    //   "raw_message": data.msg.raw_msg,
+    //   "from_email": data.msg.from_email,
+    //   "from_name": data.msg.from_name,
+    //   "to": [ForwardingMap.map(data.msg.email)]
+    // };
 
-    sendEmail(emailObj);
+    // sendEmail(emailObj);
 
     return res.end();
   }
