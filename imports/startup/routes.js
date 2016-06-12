@@ -26,13 +26,18 @@ const helpers = {
   update: function(params, req, res) {
     const oldEmail = req.body.oldEmail;
     const newEmail = req.body.newEmail;
+    const query = { forwardingAddress: oldEmail };
 
-    ForwardingMap.update({forwardingAddress: oldEmail}, {
+    ForwardingMap.update(query, {
       forwardingAddress: newEmail,
       updatedAt: new Date()
     }, {multi: true});
 
-    return res.end();
+    const emails = ForwardingMap.find(query).fetch().map((el) => {
+      return el.forwardingAddress;
+    });
+
+    return res.end(emails);
   },
 
   redirectMail: function(params, req, res) {
