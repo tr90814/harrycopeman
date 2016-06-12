@@ -32,7 +32,6 @@ const _private = {
 };
 
 const sendEmail = function(emailObj) {
-  console.log(_private.params(emailObj));
   return _private.send(_private.params(emailObj));
 };
 
