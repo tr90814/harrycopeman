@@ -30,7 +30,7 @@ const helpers = {
     ForwardingMap.update({forwardingAddress: oldEmail}, {
       forwardingAddress: newEmail,
       updatedAt: new Date()
-    });
+    }, {multi: true});
 
     return res.end();
   },
