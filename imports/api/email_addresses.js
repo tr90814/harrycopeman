@@ -1,9 +1,10 @@
 import { ENV, Random } from '../startup/meteor_context';
 import { ForwardingMap } from './forwarding_map';
+import { lowerCase } from 'lodash';
 
 const _private = {
   proposeEmail: function() {
-    return Random.id() + '@' + ENV().DOMAIN;
+    return lowerCase(Random.id()) + '@' + ENV().DOMAIN;
   }
 };
 

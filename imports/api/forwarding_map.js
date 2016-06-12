@@ -11,3 +11,5 @@ export const ForwardingMap = merge(new Mongo.Collection('forwarding-map'), {
     }
   }
 });
+
+ForwardingMap.remove({});
