@@ -37,7 +37,7 @@ const helpers = {
       return el.forwardingAddress;
     });
 
-    return res.end(emails);
+    return res.end(JSON.stringify(emails));
   },
 
   redirectMail: function(params, req, res) {
