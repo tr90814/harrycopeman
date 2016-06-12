@@ -1,5 +1,6 @@
 import { Picker } from 'meteor/meteorhacks:picker';
 import BodyParser from 'body-parser';
+import { Meteor } from './meteor_context';
 import { authCheck } from './authenticate';
 import { parseArray } from './utilities';
 import { generateEmailAddress } from '../api/email_addresses';
@@ -67,3 +68,9 @@ Picker.route('/update', helpers.update);
 Picker.route('/inbound_mail', helpers.redirectMail);
 
 module.exports = helpers;
+
+
+Meteor.startup(() => {
+  console.log(ForwardingMap.find().fetch());
+});
+
