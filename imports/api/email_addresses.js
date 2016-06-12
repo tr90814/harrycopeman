@@ -1,15 +1,16 @@
-import { ENV, Random } from '../startup/meteor_context';
+import { ENV } from '../startup/meteor_context';
 import { ForwardingMap } from './forwarding_map';
-import { lowerCase } from 'lodash';
+import randomString from 'randomstring';
 
 const _private = {
   proposeEmail: function() {
-    return lowerCase(Random.id()) + '@' + ENV().DOMAIN;
+    return randomString.generate({capitalization: 'lowercase'}) + '@' + ENV().DOMAIN;
   }
 };
 
 const generateEmailAddress = function() {
   const email = _private.proposeEmail();
+  console.log('[generated]:', email);
   return ForwardingMap.find({inboundEmail: email}).count() > 0 ? generateEmailAddress() : email;
 };
 
