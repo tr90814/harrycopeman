@@ -4,7 +4,7 @@ import randomString from 'randomstring';
 
 const _private = {
   proposeEmail: function() {
-    return randomString.generate({capitalization: 'lowercase'}) + '@' + ENV().DOMAIN;
+    return randomString.generate({capitalization: 'lowercase', length: 20}) + '@' + ENV().DOMAIN;
   }
 };
 
