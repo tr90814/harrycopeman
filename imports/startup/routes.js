@@ -37,19 +37,16 @@ const helpers = {
 
   redirectMail: function(params, req, res) {
     const events = parseArray(req.body.mandrill_events);
-    console.log(events);
     res.end();
 
     events.forEach((event) => {
       if (event.event !== 'inbound') return;
-      const emailObj = {
+      sendEmail({
         "raw_message": event.msg.raw_msg,
         "from_email": event.msg.from_email,
         "from_name": event.msg.from_name,
         "to": [ForwardingMap.map(event.msg.email)]
-      };
-      console.log(emailObj);
-      // sendEmail(emailObj);
+      });
     });
   }
 };
