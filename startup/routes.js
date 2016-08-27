@@ -58,7 +58,7 @@ router.route('/mail_maps/:id')
 router.route('/inbound')
   .post((req, res) => {
     const events = Utils.parseArray(req.body.mandrill_events);
-
+    console.log(events);
     validate(res, schemas.STRING, events.msg.raw_msg);
     validate(res, schemas.STRING, events.msg.from_name);
     validate(res, schemas.STRING, events.msg.email);
