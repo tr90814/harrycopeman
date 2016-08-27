@@ -2,7 +2,7 @@
   "name": "mail",
   "private": true,
   "scripts": {
-    "start": "nodemon server.js localhost 8080"
+    "start": "node server.js"
   },
   "dependencies": {
     "babel": "^6.5.2",
