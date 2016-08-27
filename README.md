@@ -4,13 +4,13 @@ Registers forwarding addresses and forwards all mail. The receiving addresses ca
 
 ###API endpoints
 
-`/api/mail_map` - POST - Creates a new forwarding map
+`/api/mail_map`
+
+#####POST - Creates a new forwarding map
 
 `curl http://localhost:8080/api/mail_map -d "email=some@email.com" -H "Authorization: Bearer TEST_TOKEN"`
 response:
-```json
-{"inboundAddress":"edtxjbvc264cbck2wkyv@farewill-mailserver.com"}
-```
+```json {"inboundAddress":"edtxjbvc264cbck2wkyv@farewill-mailserver.com"} ```
 
 `/api/mail_map` - GET - Returns all mail maps
 
