@@ -7,7 +7,9 @@
   "dependencies": {
     "babel": "^6.5.2",
     "body-parser": "^1.15.1",
+    "es6-shim": "^0.35.1",
     "express": "^4.14.0",
+    "jsck": "^0.3.0",
     "lodash": "^4.13.1",
     "mandrill-api": "^1.0.45",
     "mongo": "^0.1.0",

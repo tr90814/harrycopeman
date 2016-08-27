@@ -368,6 +368,11 @@
         }
       }
     },
+    "jsck": {
+      "version": "0.3.0",
+      "from": "jsck@*",
+      "resolved": "https://registry.npmjs.org/jsck/-/jsck-0.3.0.tgz"
+    },
     "lodash": {
       "version": "4.13.1",
       "from": "https://registry.npmjs.org/lodash/-/lodash-4.13.1.tgz",

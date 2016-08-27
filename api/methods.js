@@ -1,4 +1,4 @@
-const EmailAddresses = require('../api/email_addresses');
+const EmailAddresses = require('./email_addresses');
 const MailMap        = require('./mail_map');
 
 module.exports = {
@@ -9,7 +9,6 @@ module.exports = {
   },
 
   insert: function(email) {
-    // validate email string
     const mail = new MailMap();
     const date = new Date();
 
@@ -17,17 +16,15 @@ module.exports = {
     mail.inboundAddress = EmailAddresses.generate();
     mail.createdAt = date;
     mail.updatedAt = date;
-    console.log('method');
+
     return mail.save().then(() => mail.inboundAddress);
   },
 
   update: function(oldEmail, newEmail) {
-    // Validate email strings
-    return MailMap.findOne({ forwardingAddress: oldEmail })
-      .then((mailMap) => {
-        mailMap.forwardingAddress = newEmail;
-        mailMap.updatedAt = new Date();
-        return mailMap.save();
-      });
+    return MailMap.update(
+      { forwardingAddress: oldEmail },
+      { $set: { forwardingAddress: newEmail, updatedAt: new Date() } },
+      { multi: true }
+    );
   }
 };
