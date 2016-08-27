@@ -1,14 +1,13 @@
 const ENV         = require('./env');
-const parseArray  = require('./utilities').parseArray;
 
 const hasBearerAuth = function(req) {
   const token = req.headers.authorization;
-  return parseArray(ENV.API_TOKENS.map((token) => 'Bearer ' + token)).indexOf(token) !== -1;
+  return ENV.API_TOKENS.map((token) => 'Bearer ' + token).indexOf(token) !== -1;
 };
 
 const hasAuthToken = function(req) {
   const token = req.body.token;
-  return parseArray(ENV.API_TOKENS).indexOf(token) !== -1;
+  return ENV.API_TOKENS.indexOf(token) !== -1;
 };
 
 const auth = function(req, res, next) {
