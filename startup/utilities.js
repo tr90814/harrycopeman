@@ -1,6 +1,7 @@
 const _ = require('lodash');
 
 const parseArray = function(array) {
+  console.log(typeof(array), array, JSON.parse(array));
   return _.isArray(array) ? array : JSON.parse(array);
 };
 
