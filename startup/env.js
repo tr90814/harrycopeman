@@ -1,5 +1,5 @@
 const fs    = require('fs');
-const merge = require('lodash').merge;
+const merge = require('lodash/fp').merge;
 const Utils = require('./utilities');
 
 // Prod check
