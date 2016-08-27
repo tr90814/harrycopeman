@@ -18,7 +18,7 @@ app.use(morgan('dev'));
 // Configure body parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use('/api', auth);
+app.use('/api/mail_maps', auth);
 
 // Mongoose setup
 mongoose.connect(ENV.MONGODB_URI);
