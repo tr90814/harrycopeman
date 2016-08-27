@@ -58,19 +58,21 @@ router.route('/mail_maps/:id')
 router.route('/inbound_mail')
   .post((req, res) => {
     const events = Utils.parseArray(req.body.mandrill_events);
-    console.log(events);
     validate(res, schemas.INBOUND_EVENTS, events);
-
     res.end();
 
     events.forEach((event) => {
       if (event.event !== 'inbound') return;
-      Mailer.send({
-        "raw_message": event.msg.raw_msg,
-        "from_email": "forwarding@farewill.com",
-        "from_name": event.msg.from_name,
-        "to": [Methods.map(event.msg.email)]
-      });
+      Methods.findForwardingAddress(event.msg.email)
+        .then((email) => {
+          Mailer.send({
+            "raw_message": event.msg.raw_msg,
+            "from_email": "forwarding@farewill.com",
+            "from_name": event.msg.from_name,
+            "to": [email]
+          });
+        })
+        .catch((err) => console.error(err));
     });
   });
 

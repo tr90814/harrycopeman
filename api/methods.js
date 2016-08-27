@@ -2,11 +2,13 @@ const EmailAddresses = require('./email_addresses');
 const MailMap        = require('./mail_map');
 
 module.exports = {
-  map: function(email) {
-    console.log(email, MailMap.findOne({inboundAddress: email}));
-    const obj = MailMap.findOne({inboundAddress: email});
-    if (obj && obj.forwardingAddress) return obj.forwardingAddress;
-    throw new Error('[ADDRESS_NOT_FOUND]', email);
+  findForwardingAddress: function(email) {
+    return MailMap.findOne({inboundAddress: email})
+      .then((obj) => obj.forwardingAddress)
+      .then((address) => {
+        if (!address) throw new Error('[ADDRESS_NOT_FOUND]', email);
+        return address;
+      });
   },
 
   insert: function(email) {
