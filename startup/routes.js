@@ -16,33 +16,39 @@ router.route('/mail_map')
   })
 
   .get((req, res) => {
-    return MailMap.find()
+    const query = {};
+    const email = req.body.email;
+
+    validate(res, schemas.EMAIL, email);
+    if (email) query.forwardingAddress = email;
+
+    return MailMap.find(query)
       .then((mailMaps) => res.json(mailMaps))
       .catch((err) => res.send(err));
   });
 
 // /mail_map/:email
-router.route('/mail_map/:email')
+router.route('/mail_map/:id')
 
   .get((req, res) => {
-    validate(res, schemas.EMAIL, req.params.email);
+    validate(res, schemas.STRING, req.params.id);
 
-    MailMap.find({ forwardingAddress: req.params.email })
+    MailMap.findOne({ _id: req.params.id })
       .then((mailMap) => res.json(mailMap))
       .catch((err) => res.send(err));
   })
 
   .put((req, res) => {
-    validate(res, schemas.EMAIL, req.params.email);
-    validate(res, schemas.EMAIL, req.body.newEmail);
+    validate(res, schemas.STRING, req.params.id);
+    validate(res, schemas.EMAIL, req.body.email);
 
-    Methods.update(req.params.email, req.body.newEmail)
+    Methods.update(req.params.id, req.body.email)
       .then((mailMap) => res.json(mailMap))
       .catch((err) => res.send(err));
   })
 
   .delete((req, res) => {
-    validate(schemas.STRING, req.params.email);
+    validate(schemas.STRING, req.params.id);
 
     MailMap.remove({ _id: req.params.email })
       .then(() => res.json({ message: 'Successfully deleted mail map' }))

@@ -20,10 +20,10 @@ module.exports = {
     return mail.save().then(() => mail.inboundAddress);
   },
 
-  update: function(oldEmail, newEmail) {
+  update: function(id, email) {
     return MailMap.update(
-      { forwardingAddress: oldEmail },
-      { $set: { forwardingAddress: newEmail, updatedAt: new Date() } },
+      { _id: id },
+      { $set: { forwardingAddress: email, updatedAt: new Date() } },
       { multi: true }
     );
   }
