@@ -5,14 +5,6 @@ const Mailer  = require('../api/send_email');
 const Utils   = require('./utilities');
 const router  = express.Router();
 
-// Log existing
-MailMap.find().then((res) => console.log('[MAP][current mappings]:\n', res
-  .map((el) => el.inboundAddress + ' => ' + el.forwardingAddress).join('\n')
-));
-
-// Default
-router.get('/', (req, res) => res.json({ message: 'Welcome to the Farewill Mailserver microservice.' }));
-
 // /mail_map
 router.route('/mail_map')
   .post((req, res) => {

@@ -1,9 +1,10 @@
-const fs = require('fs');
+const fs    = require('fs');
+const merge = require('lodash').merge;
 const Utils = require('./utilities');
-const settings = JSON.parse(fs.readFileSync(process.env.PWD + '/settings.json', 'utf-8'));
 
-module.exports = {
-  DOMAIN: settings.DOMAIN,
-  MANDRILL_APIKEY: settings.MANDRILL_APIKEY,
+// Read settings.json file
+const settings  = JSON.parse(fs.readFileSync(process.env.PWD + '/settings.json', 'utf-8'));
+
+module.exports = merge(settings, {
   API_TOKENS: Utils.parseArray(settings.API_TOKENS)
-};
+});
