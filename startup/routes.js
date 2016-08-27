@@ -7,8 +7,8 @@ const validate = require('./validate').validate;
 const schemas  = require('./schemas');
 const router   = express.Router();
 
-// /mail_map
-router.route('/mail_map')
+// /mail_maps
+router.route('/mail_maps')
   .post((req, res) => {
     Methods.insert(req.body.email)
       .then((inboundAddress) => res.json({ inboundAddress }))
@@ -27,8 +27,8 @@ router.route('/mail_map')
       .catch((err) => res.send(err));
   });
 
-// /mail_map/:email
-router.route('/mail_map/:id')
+// /mail_maps/:id
+router.route('/mail_maps/:id')
 
   .get((req, res) => {
     validate(res, schemas.STRING, req.params.id);
