@@ -11,12 +11,18 @@ Registers forwarding addresses and forwards all mail. The receiving addresses ca
 ```Shell
 curl http://localhost:8080/api/mail_map -d "email=some@email.com" -H "Authorization: Bearer TEST_TOKEN"
 ```
-`=> {"inboundAddress":"edtxjbvc264cbck2wkyv@farewill-mailserver.com"}`
+```js
+// => {"inboundAddress":"edtxjbvc264cbck2wkyv@farewill-mailserver.com"}
+```
 
 #####GET - Returns all mail maps
 
-`curl -i -H "Authorization: Bearer TEST_TOKEN" -X GET http://localhost:8080/api/mail_map`
-`=> [{"_id":"57c1f96277721591077f3f44","updatedAt":"2016-08-27T20:34:42.593Z","createdAt":"2016-08-27T20:34:42.593Z","inboundAddress":"edtxjbvc264cbck2wkyv@farewill-mailserver.com","forwardingAddress":"some@email.com","__v":0}]`
+```Shell
+curl -i -H "Authorization: Bearer TEST_TOKEN" -X GET http://localhost:8080/api/mail_map
+```
+```js
+// => [{"_id":"57c1f96277721591077f3f44","updatedAt":"2016-08-27T20:34:42.593Z","createdAt":"2016-08-27T20:34:42.593Z","inboundAddress":"edtxjbvc264cbck2wkyv@farewill-mailserver.com","forwardingAddress":"some@email.com","__v":0}]
+```
 
 `/api/mail_map/:email`
 
