@@ -2,6 +2,7 @@ const ENV         = require('./env');
 
 const hasBearerAuth = function(req) {
   const token = req.headers.authorization;
+  console.log(ENV.API_TOKENS);
   return ENV.API_TOKENS.map((token) => 'Bearer ' + token).indexOf(token) !== -1;
 };
 
