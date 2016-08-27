@@ -1,8 +1,8 @@
-import { Meteor, ENV } from '../startup/meteor_context';
-import { Mandrill } from 'mandrill-api';
-import { merge } from 'lodash';
+const ENV       = require('../startup/env');
+const Mandrill  = require('mandrill-api').Mandrill;
+const merge     = require('lodash').merge;
 
-const MandrillAPI = new Mandrill(Meteor.settings.MANDRILL_APIKEY);
+const MandrillAPI = new Mandrill(ENV.MANDRILL_APIKEY);
 
 const _private = {
   send: function(params) {
@@ -16,14 +16,14 @@ const _private = {
   },
 
   addresses: function() {
-    return ENV().EMAILS.map((email) => {
+    return ENV.EMAILS.map((email) => {
       return { "email": email };
     });
   },
 
   params: function(emailObj) {
     return merge(emailObj, {
-      "key": ENV().MANDRILL_APIKEY,
+      "key": ENV.MANDRILL_APIKEY,
       "async": false,
       "ip_pool": "Main Pool",
       "return_path_domain": null
