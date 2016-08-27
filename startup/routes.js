@@ -55,7 +55,7 @@ router.route('/mail_maps/:id')
       .catch((err) => res.send(err));
   });
 
-router.route('/inbound')
+router.route('/inbound_mail')
   .post((req, res) => {
     const events = Utils.parseArray(req.body.mandrill_events);
     console.log(events);
