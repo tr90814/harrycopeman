@@ -11,5 +11,6 @@ const settings = isProduction ?
   JSON.parse(fs.readFileSync(process.env.PWD + '/settings.json', 'utf-8'));
 
 module.exports = merge(settings, {
-  API_TOKENS: Utils.parseArray(settings.API_TOKENS)
+  API_TOKENS: Utils.parseArray(settings.API_TOKENS),
+  DOMAIN: settings.ROOT_URL.replace('http://', '').replace('https://', '')
 });
