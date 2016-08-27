@@ -1,7 +1,7 @@
 const express  = require('express');
 const MailMap  = require('../api/mail_map');
 const Methods  = require('../api/methods');
-const Mailer   = require('../api/send_email');
+const Mailer   = require('../api/mailer');
 const Utils    = require('./utilities');
 const validate = require('./validate').validate;
 const schemas  = require('./schemas');
@@ -59,7 +59,7 @@ router.route('/inbound_mail')
   .post((req, res) => {
     const events = Utils.parseArray(req.body.mandrill_events);
     console.log(events);
-    // validate(res, schemas.INBOUND_EVENTS, events);
+    validate(res, schemas.INBOUND_EVENTS, events);
 
     res.end();
 
