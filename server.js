@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use('/api', auth);
 
 // Mongoose setup
-mongoose.connect(ENV.MONGO_URL);
+mongoose.connect(ENV.MONGODB_URI);
 
 // Add routes
 app.use('/api', router);
