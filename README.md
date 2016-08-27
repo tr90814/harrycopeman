@@ -8,7 +8,9 @@ Registers forwarding addresses and forwards all mail. The receiving addresses ca
 
 #####POST - Creates a new forwarding map
 
-`curl http://localhost:8080/api/mail_map -d "email=some@email.com" -H "Authorization: Bearer TEST_TOKEN"`
+```curl
+curl http://localhost:8080/api/mail_map -d "email=some@email.com" -H "Authorization: Bearer TEST_TOKEN"
+```
 `=> {"inboundAddress":"edtxjbvc264cbck2wkyv@farewill-mailserver.com"}`
 
 #####GET - Returns all mail maps
