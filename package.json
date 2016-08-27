@@ -4,6 +4,9 @@
   "scripts": {
     "start": "node server.js"
   },
+  "engine": {
+    "node": "6.4.0"
+  },
   "dependencies": {
     "babel": "^6.5.2",
     "body-parser": "^1.15.1",
