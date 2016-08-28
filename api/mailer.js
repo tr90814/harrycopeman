@@ -7,11 +7,9 @@ const MandrillAPI = new Mandrill(ENV.MANDRILL_APIKEY);
 const _private = {
   send: function(params) {
     MandrillAPI.messages.sendRaw(params, function(err) {
-      if (err && err[0].status !== 'sent') {
-        console.log('[Mandrill][Error] ' + JSON.stringify(err));
-      } else {
-        console.log('[Mandrill][Sent]');
-      }
+      const notSent = err && err[0].status !== 'sent';
+      const message = notSent ? '[Error] ' + JSON.stringify(err) : '[Sent]';
+      console.log('[Mandrill]' + message);
     });
   },
 
