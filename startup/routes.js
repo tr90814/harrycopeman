@@ -10,7 +10,7 @@ const router   = express.Router();
 // /mail_maps
 router.route('/mail_maps')
   .post((req, res) => {
-    Methods.insert(req.body.email)
+    Methods.insert(req.body.email, req.body.inboundAddress)
       .then((inboundAddress) => res.json({ inboundAddress }))
       .catch(res.send);
   })

@@ -11,12 +11,12 @@ module.exports = {
       });
   },
 
-  insert: function(email) {
+  insert: function(email, inboundEmail) {
     const mail = new MailMap();
     const date = new Date();
 
     mail.forwardingAddress = email;
-    mail.inboundAddress = EmailAddresses.generate();
+    mail.inboundAddress = inboundEmail ? inboundEmail : EmailAddresses.generate();
     mail.createdAt = date;
     mail.updatedAt = date;
 
