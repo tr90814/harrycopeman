@@ -31,12 +31,12 @@ const _private = {
   }
 };
 
-const sendEmail = function(emailObj) {
+const send = function(emailObj) {
   return _private.send(_private.params(emailObj));
 };
 
 module.exports = {
-  sendEmail,
+  send,
   _private,
   MandrillAPI
 };
