@@ -1,6 +1,0 @@
-{
-  "DOMAIN": "mailserver.farewill.com",
-  "API_TOKENS": ["TEST_TOKEN"],
-  "MANDRILL_APIKEY": "gQ9PHC44VIIKqMBBGRt4Hg",
-  "MONGODB_URI": "mongodb://localhost:27017/mail"
-}
