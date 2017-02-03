@@ -6,7 +6,7 @@ const app = express();
 // Port
 const port = process.env.PORT || 8080;
 
-app.get('*', (req, res) => res.send(`
+app.get('/*', (req, res) => res.send(`
   <!DOCTYPE html>
     <html>
       <head>
