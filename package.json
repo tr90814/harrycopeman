@@ -2,7 +2,7 @@
   "name": "mail",
   "private": true,
   "scripts": {
-    "start": "babel-node --presets es2015 server.js"
+    "start": "nodemon --exec babel-node --presets es2015 index.js"
   },
   "engine": {
     "node": "6.4.0"
