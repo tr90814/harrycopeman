@@ -1,4 +1,6 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const request = require('request');
 
 // App init
 const app = express();
@@ -6,24 +8,34 @@ const app = express();
 // Port
 const port = process.env.PORT || 8080;
 
-app.get('/*', (req, res) => res.send(`
-  <!DOCTYPE html>
-    <html>
-      <head>
-        <title>I'm harry copeman</title>
-        <link rel="stylesheet" href="/assets/index.css" />
-      </head>
+app.use(bodyParser.json());
+app.use(express.static('public'));
 
-      <body>
-        <div id="root">
-          <h1>Hello I'm Harry Copeman</h1>
-          <img src='https://scontent-cdg2-1.cdninstagram.com/t51.2885-19/s1080x1080/16122658_568188593305661_999604250315063296_a.jpg'/>
-        </div>
-      </body>
+app.get('/*', (req, res) => {
+  request.get('http://hipsterjesus.com/api/?paras=1&type=hipster-centric&html=false', (err, data) => {
+    const text = err ? "I'm Harry Copeman" : JSON.parse(data.body).text.split('.')[0];
 
-      <script src="/assets/bundle.js"></script>
-    </html>
-`));
+    res.send(`
+      <!DOCTYPE html>
+        <html>
+          <head>
+            <title>Harry copeman</title>
+            <link rel="stylesheet" href="/main.css" />
+          </head>
+
+          <body>
+            <div id="root">
+              <div class='c-speech-bubble'>
+                ${text}.
+              </div>
+            </div>
+          </body>
+
+          <script src="/main.js"></script>
+        </html>
+    `);
+  });
+});
 
 // Listen
 app.listen(port);

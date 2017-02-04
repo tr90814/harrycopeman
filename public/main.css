@@ -1,0 +1,36 @@
+
+#root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/harry.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.c-speech-bubble {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  padding: 20px;
+  width: 300px;
+  background-color: white;
+  margin-left: -270px;
+  margin-bottom: -30px;
+  border-radius: 20px;
+}
+
+.c-speech-bubble:after {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-top: 40px solid white;
+  bottom: -17px;
+  right: -11px;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  transform: rotate(-50deg);
+}
