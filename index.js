@@ -40,8 +40,10 @@ app.get('/*', (req, res) => {
             <meta name="theme-color" content="#ffffff">
           </head>
           <body>
-            <div class='c-speech-bubble'>
-              ${text}.
+            div class='c-image-container'>
+              <div class='c-speech-bubble'>
+                ${text}.
+              </div>
             </div>
           </body>
         </html>
