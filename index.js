@@ -39,16 +39,11 @@ app.get('/*', (req, res) => {
             <meta name="msapplication-TileImage" content="/fav/ms-icon-144x144.png">
             <meta name="theme-color" content="#ffffff">
           </head>
-
           <body>
-            <div id="root">
-              <div class='c-speech-bubble'>
-                ${text}.
-              </div>
+            <div class='c-speech-bubble'>
+              ${text}.
             </div>
           </body>
-
-          <script src="/main.js"></script>
         </html>
     `);
   });

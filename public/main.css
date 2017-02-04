@@ -1,5 +1,5 @@
 
-#root {
+body {
   position: absolute;
   top: 0;
   left: 0;
@@ -32,5 +32,7 @@
   right: -11px;
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
-  transform: rotate(-50deg);
+  -webkit-transform: rotate(-50deg);
+      -ms-transform: rotate(-50deg);
+          transform: rotate(-50deg);
 }
